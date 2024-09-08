@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Portfolio - Anjna</title>
+    <meta name="description" content>
+    <meta name="keywords" content>
+
+    <!-- Favicons -->
+    <link href="assets/img/logo.jpg" rel="icon">
+    <link href="assets/img/logo.jpg" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+.portfolio-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  perspective: 1000px;
+}
+
+/* Card Inner Container */
+.card-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s, box-shadow 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Flip with 3D Perspective */
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Card Image */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s;
+}
+
+/* Card Content */
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 1;
+  transform: translateY(0);
+}
+
+/* Overlay Effect */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  padding: 20px;
+  text-align: center;
+  transform: scale(0.9);
+}
+
+/* Hover Effects */
+.card:hover .card-content {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Card Expand Effect */
+.card-inner {
+  transition: transform 0.6s, box-shadow 0.6s;
+}
+
+.card:hover .card-inner {
+  transform: scale(1.05);
+}
+
+/* Animated Border on Hover */
+.card {
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.card:hover {
+  border-color: #3498db;
+}
+
+/* Overlay with Icon Animation */
+.card-overlay {
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+}
+
+.card-overlay i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+
+.card-overlay i:hover {
+  transform: rotate(360deg);
+}
+.portfolio-content {
+  position: relative;
+}
+
+.portfolio-img img {
+  width: 100%;
+  display: block;
+}
+
+.portfolio-name {
+  text-align: center;
+  padding: 10px;
+  background-color: #f8f9fa; /* Adjust background color as needed */
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-content:hover .portfolio-name {
+  opacity: 0;
+}
+
+.portfolio-info {
+  padding: 10px;
+  background-color: #ffffff; /* Adjust background color as needed */
+}
+
+#hero .container {
+  text-align: center;
+  /* margin-top: 50px; */
+}
+
+#hero .social-links {
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+}
+#hero {
+  background: url('assets/img/bg-main4.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  #hero {
+    background: url('assets/img/bg-main6.jpg') no-repeat center center;
+    background-size: cover;
+    height: auto; /* Adjust height on mobile */
+    background-attachment: scroll; /* Avoid fixed background on mobile */
+  }
+
+  #hero .container {
+    padding: 20px;
+    /* margin-top: 200px; */
+  }
+}
+
+
+    </style>
+  </head>
+
+  <body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1 class="sitename">Anjna</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Skills</a></li>
+            <li><a href="#portfolio">Projects</a></li>
+            <!-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li> -->
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="resume.html">Resume</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+      </div>
+    </header>
+
+    <main class="main">
+
+      <!-- Hero Section -->
+      <section id="hero" class="hero section dark-background">
+        <!-- <img src="assets/img/bg-main4.jpg" alt="Background Image" class="hero-bg"> -->
+      
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <h2>Anjna Jariwal<br></h2>
+          <p>I'm <span class="typed" data-typed-items="Designer, Developer">Decoder</span></p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/anjnajariwal/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/anjna-jariwal-a82478226/"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/Anjna02"><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+      </section>
+      
+      
+
+      <!-- About Section -->
+      <section id="about" class="about section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>About</h2>
+
+        </div><!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="row gy-4 justify-content-between">
+            <div class="col-lg-4 profile-img align-self-start">
+              <img src="assets/img/profile-main.jpg" class="img-fluid" alt>
+            </div>
+            <div class="col-lg-7 content">
+              <h3>I'm proficient in Java, C++, React.js, PHP & SQL
+              </h3>
+              <br>
+              <h4>
+                Eager to contribute my skills and learn from experienced
+                professionals in the field. Let's connect and explore
+                opportunities to collaborate and grow together.
+              </h4>
+              <br>
+              <h5>“In the World of Technology, Continuous Learning is the Key to
+                Unlocking New Possibilities.”</h5>
+            </div>
+          </div>
+
+        </div>
+
+      </section><!-- /About Section -->
+
+      <!-- Services Section -->
+      <section id="services" class="services section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Skills</h2>
+          <p>Development Toolkit</p>
+        </div><!-- End Section Title -->
+
+        <div class="container">
+
+          <div class="row gy-4">
+
+            <div
+              class="col-lg-4 col-md-6 service-item d-flex align-items-center"
+              data-aos="fade-up" data-aos-delay="100">
+              <div class="icon flex-shrink-0">
+                <i class="fab fa-java"></i>
+              </div>
+              <div>
+                <h4 class="title">Java</h4>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6 service-item d-flex align-items-center"
+              data-aos="fade-up" data-aos-delay="200">
+              <div class="icon flex-shrink-0">
+                <i class="fab fa-cuttlefish"></i> <!-- Represents C++ -->
+              </div>
+              <div>
+                <h4 class="title">C++</h4>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6 service-item d-flex align-items-center"
+              data-aos="fade-up" data-aos-delay="300">
+              <div class="icon flex-shrink-0">
+                <i class="fab fa-js"></i>
+              </div>
+              <div>
+                <h4 class="title">JavaScript</h4>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6 service-item d-flex align-items-center"
+              data-aos="fade-up" data-aos-delay="400">
+              <div class="icon flex-shrink-0">
+                <i class="fab fa-php"></i>
+              </div>
+              <div>
+                <h4 class="title">PHP</h4>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6 service-item d-flex align-items-center"
+              data-aos="fade-up" data-aos-delay="500">
+              <div class="icon flex-shrink-0">
+                <i class="fas fa-database"></i>
+              </div>
+              <div>
+                <h4 class="title">SQL</h4>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 service-item d-flex align-items-center"
+              data-aos="fade-up" data-aos-delay="500">
+              <div class="icon flex-shrink-0">
+                <i class="fab fa-react"></i>
+              </div>
+              <div>
+                <h4 class="title">React Js</h4>
+              </div>
+            </div>
+
+          </div>
+
+        </section><!-- /Services Section -->
+
+        <section id="portfolio" class="portfolio section">
+
+          <!-- Section Title -->
+          <div class="container section-title" data-aos="fade-up">
+            <h2>Portfolio</h2>
+            <p>Projects that Strengthened My Expertise in Modern
+              Technologies</p>
+          </div><!-- End Section Title -->
+
+          <div class="container">
+
+            <div class="isotope-layout" data-default-filter="*"
+              data-layout="masonry" data-sort="original-order">
+
+              <div class="row gy-4 isotope-container" data-aos="fade-up"
+                data-aos-delay="200">
+
+                <div
+                  class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+                  <div class="portfolio-content h-100">
+                    <div class="portfolio-img">
+                      <img src="assets/img/elms.png" class="img-fluid" alt>
+                    </div>
+                    <div class="portfolio-name">
+                      <h4>Employee Management System</h4>
+                    </div>
+                    <div class="portfolio-info">
+                      <p>A PHP-based application for managing employee records,
+                        tracking leave, and evaluating performance.</p>
+                      <a href="assets/img/elms.png" title="ELMS"
+                        data-gallery="portfolio-gallery-product"
+                        class="glightbox preview-link"><i
+                          class="bi bi-zoom-in"></i></a>
+                      <!-- <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a> -->
+                    </div>
+                  </div>
+                </div><!-- End Portfolio Item -->
+
+                <div
+                  class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+                  <div class="portfolio-content h-100">
+                    <div class="portfolio-img">
+                      <img src="assets/img/cgbook.png" class="img-fluid" alt>
+                    </div>
+                    <div class="portfolio-name">
+                      <h4>CGBook</h4>
+                    </div>
+                    <div class="portfolio-info">
+                      <p>A social media web application, allowing users to
+                        create profiles, share posts, and connect with
+                        friends.</p>
+                      <a href="assets/img/cgbook.png" title="CGBook"
+                        data-gallery="portfolio-gallery-branding"
+                        class="glightbox preview-link"><i
+                          class="bi bi-zoom-in"></i></a>
+                      <!-- <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a> -->
+                    </div>
+                  </div>
+                </div><!-- End Portfolio Item -->
+
+                <div
+                  class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
+                  <div class="portfolio-content h-100">
+                    <div class="portfolio-img">
+                      <img src="assets/img/rns.png" class="img-fluid" alt>
+                    </div>
+                    <div class="portfolio-name">
+                      <h4>Reservation Nexus System</h4>
+                    </div>
+                    <div class="portfolio-info">
+                      <p>A platform for booking services like hotels and events.
+                        Users can browse options, make reservations.</p>
+                      <a href="assets/img/rns.png"
+                        title="Reservation Nexus System"
+                        data-gallery="portfolio-gallery-book"
+                        class="glightbox preview-link"><i
+                          class="bi bi-zoom-in"></i></a>
+                      <!-- <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a> -->
+                    </div>
+                  </div>
+                </div><!-- End Portfolio Item -->
+
+              </div><!-- End Portfolio Container -->
+
+            </div>
+
+          </div>
+
+        </section><!-- /Portfolio Section -->
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+
+          <!-- Section Title -->
+          <div class="container section-title" data-aos="fade-up">
+            <h2>Contact</h2>
+            <p>Let's Connect & Learn More</p>
+          </div><!-- End Section Title -->
+
+          <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="info-wrap" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-5">
+
+                <div class="col-lg-4">
+                  <div class="info-item d-flex align-items-center">
+                    <i class="bi bi-geo-alt flex-shrink-0"></i>
+                    <div>
+                      <h3>Address</h3>
+                      <p>68/83, Sector 6, Pratap Nagar, Jaipur</p>
+                    </div>
+                  </div>
+                </div><!-- End Info Item -->
+
+                <div class="col-lg-4">
+                  <div class="info-item d-flex align-items-center">
+                    <i class="bi bi-telephone flex-shrink-0"></i>
+                    <div>
+                      <h3>Call<br></h3>
+                      <p>+91 86908 77005</p>
+                    </div>
+                  </div>
+                </div><!-- End Info Item -->
+
+                <div class="col-lg-4">
+                  <div class="info-item d-flex align-items-center">
+                    <i class="bi bi-envelope flex-shrink-0"></i>
+                    <div>
+                      <h3>Email</h3>
+                      <p>anjnajariwal02@gmail.com</p>
+                    </div>
+                  </div>
+                </div><!-- End Info Item -->
+
+              </div>
+            </div>
+
+            <form action="https://postmail.invotes.com/send" method="post"
+              id="email_form"
+              style="max-width: 600px; margin: 40px auto; padding: 30px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
+              <h2
+                style="text-align: center; color: #333; margin-bottom: 25px; font-size: 24px; font-weight: bold; letter-spacing: 1px;">
+                Get in Touch</h2>
+
+              <input type="text" name="subject" placeholder="Name"
+                style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); transition: border-color 0.3s;" />
+
+              <textarea name="text" placeholder="Your Message"
+                style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); transition: border-color 0.3s; height: 120px;"></textarea>
+
+              <input type="hidden" name="access_token"
+                value="7n75nxg8oi1kp8pf3bsj1l99" />
+              <input type="hidden" name="success_url"
+                value=".?message=Email+Successfully+Sent%21&isError=0" />
+              <input type="hidden" name="error_url"
+                value=".?message=Email+could+not+be+sent.&isError=1" />
+
+              <input type="text" name="reply_to" placeholder="Your Email"
+                style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); transition: border-color 0.3s;" />
+
+              <input type="text" name="extra_phone_number"
+                placeholder="Phone Number"
+                style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); transition: border-color 0.3s;" />
+
+              <input type="hidden" name="sms_format" value="true" />
+
+              <input id="submit_form" type="submit" value="Send Message"
+                style="width: 100%; padding: 15px; background-color: #C1AC8F; border: none; border-radius: 6px; color: white; font-size: 18px; font-weight: bold; cursor: pointer; transition: background-color 0.3s;" />
+
+            </form>
+
+            <script>
+          var submitButton = document.getElementById("submit_form");
+          var form = document.getElementById("email_form");
+          form.addEventListener("submit", function (e) {
+            setTimeout(function () {
+              submitButton.value = "Sending...";
+              submitButton.disabled = true;
+            }, 1);
+          });
+        </script>
+
+          </div>
+
+        </section><!-- /Contact Section -->
+
+      </main>
+
+      <footer id="footer" class="footer light-background">
+        <div class="container">
+          <h3 class="sitename">Anjna Jariwal</h3>
+          <div class="social-links d-flex justify-content-center">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/anjna-jariwal-a82478226/"><i
+                class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/Anjna02"><i
+                class="bi bi-github"></i></a>
+          </div>
+          <div class="container">
+            <div class="copyright">
+              <span>Copyright</span> <strong
+                class="px-1 sitename">Anjna</strong>
+              <span>All Rights Reserved</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Scroll Top -->
+      <a href="#" id="scroll-top"
+        class="scroll-top d-flex align-items-center justify-content-center"><i
+          class="bi bi-arrow-up-short"></i></a>
+
+      <!-- Preloader -->
+      <div id="preloader"></div>
+
+      <!-- Vendor JS Files -->
+      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="assets/vendor/php-email-form/validate.js"></script>
+      <script src="assets/vendor/aos/aos.js"></script>
+      <script src="assets/vendor/typed.js/typed.umd.js"></script>
+      <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+      <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+      <script
+        src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+      <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+      <!-- Main JS File -->
+      <script src="assets/js/main.js"></script>
+
+    </body>
+
+  </html>
